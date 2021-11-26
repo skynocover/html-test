@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>preact</title>
+  </head>
+
+  <body>
+    <script type="module">
+      import { h, render } from "https://cdn.skypack.dev/preact";
+      import { useState } from "https://cdn.skypack.dev/preact/hooks";
+      import htm from "https://cdn.skypack.dev/htm";
+
+      const html = htm.bind(h);
+
+      const App = () => {
+        const [count, setCount] = useState(0);
+
+        return html`<div>
+          <h1>${count}</h1>
+          <button onClick=${() => setCount(count + 1)}>+</button>
+        </div>`;
+      };
+
+      render(html`<${App}></${App}>`, document.body);
+    </script>
+  </body>
+</html>
